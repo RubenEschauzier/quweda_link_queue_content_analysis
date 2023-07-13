@@ -1,8 +1,8 @@
 ## Introduction
 {:#introduction}
-The internet is created and celebrated as a decentralized network that empowers individuals and fosters innovation in ways never thought imaginable. 
-However, as we progress further into the digital age, the push for centralization of the internet has been significant. 
-The control of the internet consolidates into the hands of a few massive companies.
+The Web is created and celebrated as a decentralized network that empowers individuals and fosters innovation in ways never thought imaginable. 
+However, as we progress further into the digital age, the push for centralization of the Web has been significant. 
+The control of the Web consolidates into the hands of a few massive companies.
 These companies relentlessly collect, commercialize, and abuse this data in an unprecedented scale. 
 The control of data exerted by these companies locks people into vendors, stifles competition in the online space, and raises pressing privacy concerns. \\
 Luckily, a counter-movement to this trend has emerged in the (scientific) community.
@@ -11,6 +11,7 @@ One such example is the SOLID ecosystem—an innovative framework championed by 
 SOLID, strives to empower individuals by giving them full control over their personal data. 
 At its core, SOLID fosters a paradigm shift from the current model where data is locked away in centralized silos to a more inclusive and user-centric approach.
 By decentralizing the web, SOLID allows users to store their personal information in secure, individual data pods while granting them granular control over who can access and manipulate their data. \\
+<span class="comment" data-author="RV">I don't think the preceding paragraphs are needed here; let's assume that readers are quickly in our frame of reference (data is decentralized and permissioned in our world, no SPARQL endpoints, deal with it.</span>
 Current querying approaches are not yet able to deal with the heavily decentralized data storage framework of SOLID.
 Due to possibly millions of small data vaults being spread over the web, we need robust federated querying approaches that can efficiently retrieve the data vaults and execute queries over the retrieved data.
 While federated query approaches exist [](cite:cites rakhmawati2013querying, montoya2017odyssey, saleem2018costfed), these assume that the possible sources are known beforehand and that there are only a few large sources. 
