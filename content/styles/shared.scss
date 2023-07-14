@@ -4,7 +4,11 @@ figure {
     width: 100%;
   }
 }
-
+.side-by-side-figure{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+}
 .todo {
   color: red;
   &::before {
