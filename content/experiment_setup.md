@@ -1,6 +1,6 @@
 ## Experiment Setup
 {:#Experiment Setup}
-In this section we will first describe what data we use to make our analysis. Then we will introduce the possible link types wecan track in the SOLID environment and how we measure the link queue evolution. Finally, we introduce metrics to represent the diversity of links in the queue.
+In this section we will first describe what data we use to make our analysis. Then we will introduce the possible link types we can track in the SOLID environment and how we measure the link queue evolution. Finally, we introduce metrics to represent the diversity of links in the queue. 
 
 ### Data
 {:##Data}
@@ -15,7 +15,7 @@ The Solidbench benchmark uses the read-only interactive workload of SNB, which c
 ### Link Types in the SOLID Ecosystem
 {:##Link Types in the SOLID Ecosystem}
 
-In the solid ecosystem there are multiple predicates that serve a distinct function and result from the structural properties of the ecosystem. For example, LDP containers serve as ..., while type indexes denote a direct link to a resource in the vault, like comments or posts. In [](#tab:priorities) we show all considered predicate types and the short versions of their name. Note the presence of cMatch, which is the reachability criterion described in CITE HERE, we do not consider the other criterions like cAll because this will lead to an inpractical number of followed links. When we dereference a URI, we can record whether we obtain this URI from a triple with one of the previously mentioned predicates, thus giving us information on the type of document we are dereferencing. This prior knowledge on the data we query can potentially serve as the basis of a link prioritisation algorithm.
+In the solid ecosystem there are multiple predicates that serve a distinct function and result from the structural properties of the ecosystem. For example, LDP Basic Containers serve as directories, that can contain references to either files or other LDP containers, while type indexes denote a direct link to a resource in the vault with a certain type or class, like comments or posts. For a more in-depth explanation of the SOLID environment and its structural properities we refer to [](cite:cites taelman2023evaluation). In [](#tab:priorities) we show all considered predicate types and the short versions of their name. Note the presence of cMatch, which is the reachability criterion described in [](cite:cites hartig2012foundations), we do not consider the other criterions like cAll because this will lead to an inpractical number of followed links. When we dereference a URI, we can record whether we obtain this URI from a triple with one of the previously mentioned predicates, thus giving us information on the type of document we are dereferencing. This prior knowledge on the data we query can potentially serve as the basis of a link prioritisation algorithm or augment the algorithms in [](#relatedwork).
 
 <figure id="tab:priorities" class="table" markdown="1">
 
@@ -42,7 +42,9 @@ Using this information, we will first plot the different types of sources and th
 
 $$
 \begin{aligned}
-    pEff = \dfrac{\sum_{\{t_{0} \leq t_{i} < t_{N}| n^{q}_{t_{i}} > 1\}} t_{i+1} - t_{i}}{t_{n} - t_{0}} 
+    pEff = \dfrac{\sum_{\{t_{0} \leq t_{i} < t_{N}| n^{q}_{t_{i}} > 1\}} t_{i+1} - t_{i}}{t_{n} - t_{0}}, \quad 
     ADL = \dfrac{\sum_{\{t_{0} \leq t_{i} < t_{N}\}} (t_{i+1} - t_{i})n^{q}_{t_{i}}}{t_{n} - t_{0}}.
 \end{aligned}
 $$
+
+With $$t_{0}$$ the first timestamp of a link queue change recorded, $$t_{N}$$ the final timestamp, and $$n^{q}_{t_{i}}$$ the number of different link sources in the queue at timestamp $$t_{i}$$. THe analysed queries are executed to the algorithm described in [](cite:cites taelman2023evaluation). This means that our the link queue used is a FIFO queue. We run the queries using the default SOLID configuration of Comunica [cite:cites taelman2018comunica] and we set the time-out at 60 seconds, however this is not a strict time-out as it can run longer due to implementation details.
