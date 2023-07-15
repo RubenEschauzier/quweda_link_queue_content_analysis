@@ -4,10 +4,47 @@ figure {
     width: 100%;
   }
 }
-.side-by-side-figure{
+
+#figure-main-1 {
+  grid-area: figure-1;
+}
+
+#figure-main-2 {
+  grid-area: figure-2;
+}
+
+#figure-main-3 {
+  grid-area: figure-3;
+}
+
+#figure-main-4 {
+  grid-area: figure-4;
+}
+
+#figure-main-5 {
+  grid-area: figure-5;
+}
+
+#figure-main-6 {
+  grid-area: figure-6;
+}
+
+#figure-main-7 {
+  grid-area: figure-7;
+  width: 50%;
+  justify-self: center;
+}
+
+.result-figure-grid {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: auto;
+
+  grid-template-areas: 
+    "figure-1 figure-2"
+    "figure-3 figure-4"
+    "figure-5 figure-6"
+    "figure-7 figure-7";
 }
 .todo {
   color: red;
