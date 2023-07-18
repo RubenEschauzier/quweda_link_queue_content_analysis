@@ -1,5 +1,5 @@
 ## Experiment Setup
-{:#Experiment Setup}
+{:#experimentsetup}
 In this section we will first describe what data we use to make our analysis. Then we will introduce the possible link types we can track in the SOLID environment and how we measure the link queue evolution. Finally, we introduce metrics to represent the diversity of links in the queue. 
 
 ### Data
@@ -35,16 +35,17 @@ The combinations of link priorities we will try in our experiment, each number d
 </figure>
 
 ### Link Queue Analysis
-{:##Link Queue Analysis}
+{:##linkqueueanalysis}
 
 To investigate the behavior of the link queue during LTQP we will register the link source for each dereferenced link during query execution. This gives us a queue of link sources that corresponds to the links in the queue. We make a snapshot of the link sources everytime a link is either popped or pushed to the queue and register the timestamp of this action. Thus, we obtain the entire evolution of the sources present in the link queue during query execution. \\
-Using this information, we will first plot the different types of sources and their numbers present in the link queue. This plot will give us insight in the data discovery pattern of the query engine and allow us to investigate avenues for link prioritization algorithms. Furthermore, we will determine the percentage of time the link queue contains two or more links and determine the average number of link types present in the link queue. These metrics are calculated as follows
+Using this information, we will first plot the different types of sources and their numbers present in the link queue. This plot will give us insight in the data discovery pattern of the query engine and allow us to investigate avenues for link prioritization algorithms. Furthermore, we will determine the percentage of time the link queue contains $$k$$ or more links and determine the average number of link types present in the link queue, given $$k$$ links are present. These metrics are calculated as follows
 
 $$
 \begin{aligned}
-    pEff = \dfrac{\sum_{\{t_{0} \leq t_{i} < t_{N}| n^{q}_{t_{i}} > 1\}} t_{i+1} - t_{i}}{t_{n} - t_{0}}, \quad 
-    ADL = \dfrac{\sum_{\{t_{0} \leq t_{i} < t_{N}\}} (t_{i+1} - t_{i})n^{q}_{t_{i}}}{t_{n} - t_{0}}.
+    pEff(k) = \dfrac{\sum_{\{t_{0} \leq t_{i} < t_{N}| n^{q}_{t_{i}} \geq k\}} t_{i+1} - t_{i}}{t_{n} - t_{0}}, \quad 
+    \bar{n^{q}}(k) = \dfrac{\sum_{\{t_{0} \leq t_{i} < t_{N}|n^{q}_{t_{i}} \geq k\}} (t_{i+1} - t_{i})n^{q}_{t_{i}}}{t_{n} - t_{0}}. \\
+
 \end{aligned}
 $$
 
-With $$t_{0}$$ the first timestamp of a link queue change recorded, $$t_{N}$$ the final timestamp, and $$n^{q}_{t_{i}}$$ the number of different link sources in the queue at timestamp $$t_{i}$$. THe analysed queries are executed to the algorithm described in [](cite:cites taelman2023evaluation). This means that our the link queue used is a FIFO queue. We run the queries using the default SOLID configuration of Comunica [cite:cites taelman2018comunica] and we set the time-out at 60 seconds, however this is not a strict time-out as it can run longer due to implementation details.
+With $$t_{0}$$ the first timestamp of a link queue change recorded, $$t_{N}$$ the final timestamp, and $$n^{q}_{t_{i}}$$ the number of different link sources in the queue at timestamp $$t_{i}$$. The analysed queries are executed to the algorithm described in [](cite:cites taelman2023evaluation). This means that our the link queue used is a FIFO queue. 
