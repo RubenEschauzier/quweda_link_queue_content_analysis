@@ -1,8 +1,7 @@
 ## Introduction
 {:#introduction}
 The Solid ecosystem is a decentralized environment that allows users to control their data. 
-At its core, Solid uses user-specific data vaults to store data. 
-These data vaults do not expose SPARQL endpoints and are highly decentralized, with up to millions of vaults spread over the web.
+At its core, Solid stores data in user-specific, highly decentralized data vaults that do not expose SPARQL endpoints. 
 Due to the highly decentralized nature of Solid, we need robust federated querying approaches that can efficiently retrieve the data vaults and execute queries over the retrieved data.
 While federated query approaches exist [](cite:cites rakhmawati2013querying, montoya2017odyssey, saleem2018costfed), these assume that the possible sources are known beforehand and that there are only a few large sources. 
 These assumptions do not hold for Solid. 
@@ -26,4 +25,4 @@ Our intended contributions are as follows:
 - Finally, we discuss our results and provide recommendations for promising directions of future work based on our results. 
 
 To the authors' knowledge, we are the first paper that performs an in-depth investigation of the link queue during LTQP and investigate the sources of the links in the link queue when querying the decentralized environment SOLID. 
-In the following sections, we will first discuss prior works on link prioritization in the context of the entire Web of Linked Data. Then, we will introduce the dataset and method used for our analysis. Following this, we will present our results and discuss their implications. Finally, we end with the conclusion.
+<!-- In the following sections, we will first discuss prior works on link prioritization in the context of the entire Web of Linked Data. Then, we will introduce the dataset and method used for our analysis. Following this, we will present our results and discuss their implications. Finally, we end with the conclusion. -->

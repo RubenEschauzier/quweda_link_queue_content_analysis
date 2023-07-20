@@ -30,7 +30,6 @@ In [](#tab:priorities), we show all considered predicate types and the short ver
 Note the presence of cMatch, the reachability criterion described in [](cite:cites hartig2012foundations).
 We do not consider the cAll criterion, as it will lead to an impractical number of followed links. 
 When we dereference a URI, we can record whether we discover this URI from a triple with one of the previously mentioned predicates, thus giving us information on the type of document we are dereferencing. 
-This prior knowledge of the data can potentially serve as the basis of a link prioritization algorithm or augment the algorithms in [](#relatedwork).
 
 <figure id="tab:priorities" class="table" markdown="1">
 

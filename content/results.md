@@ -11,7 +11,6 @@ The result is given in [](#figure-main-6).
 We find that the cMatch criterion can quickly generate an enormous number of links to follow, slowing down the query execution and making the query infeasible to execute.
 
 <figure id="figure-main" class="result-figure-grid ">
-
 <figure id="figure-main-1" class="subfigure">
 <img src="figures/interactive-complex-3-timestamps.svg">
 <figcaption markdown="block">
@@ -39,20 +38,23 @@ Link queue content of the short-2 Query.
 Link queue content of the short-7 query. 
 </figcaption>
 </figure>
+</figure>
 
-<figure id="figure-main-5" class="subfigure">
+<figure id="figure-main" class="result-figure-grid ">
+<figure id="figure-main-1" class="subfigure">
 <img src="figures/interactive-complex-2-timestamps-shortened.svg">
 <figcaption markdown="block">
 Link queue content of the complex-2 query.
 </figcaption>
 </figure>
-<figure id="figure-main-6" class="subfigure">
+<figure id="figure-main-2" class="subfigure">
 <img src="figures/interactive-complex-2-timestamps.svg">
 <figcaption markdown="block">
 Link queue content of the complex-2 query with an extended timeout. 
 </figcaption>
 </figure>
 </figure>
+
 
 We investigate the metrics introduced in [](#experimentsetup) to quantify the two query categories.
 We split the queries into two groups, one with links in the queue for more than 50% of the query execution time and the other for less than 50%. 
