@@ -30,7 +30,7 @@ In [](#tab:priorities), we show all considered predicate types and the short ver
 Note the presence of cMatch, the reachability criterion described in [](cite:cites hartig2012foundations).
 We do not consider the cAll criterion, as it will lead to an impractical number of followed links. 
 When we dereference a URI, we can record whether we discover this URI from a triple with one of the previously mentioned predicates, thus giving us information on the type of document we are dereferencing. 
-This prior knowledge of the data we query can potentially serve as the basis of a link prioritization algorithm or augment the algorithms in [](#relatedwork).
+This prior knowledge of the data can potentially serve as the basis of a link prioritization algorithm or augment the algorithms in [](#relatedwork).
 
 <figure id="tab:priorities" class="table" markdown="1">
 
@@ -53,10 +53,10 @@ The different predicates or criterions used to discover new links in Link Traver
 {:##linkqueueanalysis}
 
 To investigate the behavior of the link queue during LTQP, we will register the link source for each dereferenced link during query execution. 
-We make a snapshot of the link sources in the link queue when a link is popped or pushed to the queue and register the timestamp of this action. 
+We make a snapshot of the link sources in the link queue when a link is popped from or pushed to the link queue and register the timestamp of this action. 
 Thus, we obtain the evolution of the sources in the link queue during query execution. \\
 Using this information, we will first plot the different types of sources and their numbers present in the link queue. 
-This plot will give us insight into the data discovery pattern of the query engine and allow us to investigate avenues for link prioritization algorithms. 
+This plot will give us insight into the data discovery pattern of the query engine and allow us to investigate avenues for link prioritization algorithms or other forms of optimization. 
 Furthermore, we will determine the percentage of time the link queue contains $$k$$ or more links and determine the average number of link types present in the link queue, given $$k$$ links are present.
 We calculate these metrics using
 

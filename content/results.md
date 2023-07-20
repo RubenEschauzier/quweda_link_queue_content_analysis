@@ -1,7 +1,14 @@
 ## Results
 {:#results}
 
-First, we will present a selection of the link queue evolutions that accurately represent what we found in all 27 queries. [](#figure-main) has the query execution time on the x-axises and the number of links of a given type on the y-axis. We run the queries using the default Solid configuration of Comunica [](cite:cites taelman2018comunica) and set the timeout at 60 seconds. The timeout is not strict, as it can run longer due to implementation details. From these figures, we find two categories of queries: queries where the engine can quickly process the number of discovered links and queries where the number of links followed increases steadily to the point that the query engine cannot handle the number of discovered links. Furthermore, we set the timeout to 1100 seconds for [](#figure-main-5) to investigate the spike of cMatch links. In [](#figure-main-6), we find that the cMatch criterion can quickly generate an enormous number of links to follow, slowing down the query execution and making the query infeasible to execute.
+First, we will present a selection of the link queue evolutions that accurately represent what we found in all 27 queries. 
+[](#figure-main) has the query execution time on the x-axis and the number of links of a given type on the y-axis. 
+We run the queries using the default Solid configuration of Comunica [](cite:cites taelman2018comunica) and set the timeout at 60 seconds.
+The timeout is not strict, as it can run longer due to implementation details. 
+From these figures, we find two categories of queries: queries where the engine can quickly process the number of discovered links and queries where the number of links followed increases steadily to the point that the query engine cannot handle the number of discovered links. 
+Furthermore, we set the timeout to 1100 seconds for [](#figure-main-5) to investigate the spike of cMatch links. 
+The result is given in [](#figure-main-6). 
+We find that the cMatch criterion can quickly generate an enormous number of links to follow, slowing down the query execution and making the query infeasible to execute.
 
 <figure id="figure-main" class="result-figure-grid ">
 
@@ -47,7 +54,10 @@ Link queue content of the complex-2 query with an extended timeout.
 </figure>
 </figure>
 
-We investigate the metrics introduced in [](#experimentsetup) to quantify the two query categories. We split the queries into two groups, one with links in the queue for more than 50% of the query execution time and the other for less than 50%. The group with high queue occupancy contains twelve queries, while the other group contains fifteen queries. The average metrics of the groups are shown in [](#tab:metrics). 
+We investigate the metrics introduced in [](#experimentsetup) to quantify the two query categories.
+We split the queries into two groups, one with links in the queue for more than 50% of the query execution time and the other for less than 50%. 
+The group with high queue occupancy contains twelve queries, while the other group contains fifteen queries.
+The average metrics of the groups are shown in [](#tab:metrics). 
 
 <figure id="tab:metrics" class="table" markdown="1">
 
@@ -64,6 +74,17 @@ This table shows the average metrics for queries with over and under 50% link qu
 ## Discussion
 {:#Discussion}
 
-As mentioned, we can visually divide queries into two subgroups. Queries for which the link queue is mainly empty and the query planning forms the bottleneck, and queries where the link queue fills up rapidly and the query engine cannot dereference the links quickly enough. The metrics in [](#tab:metrics) support our visual distinction. By dividing the queries based on the percentage of time the link queue has at least one entry, we find a clear difference in link queue characteristics. We observe that queries with high queue occupancy have a higher percentage of *cMatch* links and, on average, have more than one type of link in the queue for 50% of the query execution time. On the other hand, queries with low queue occupancy have a higher occurrence rate of *contains* links and seldom have more than two types of links in the queue at a given time.
-The queries where the link queue is empty for most of the query execution time support the conclusion of the [](cite:cites taelman2023evaluation). The paper concludes that current query plan optimization approaches perform poorly for LTQP. When the link queue is empty, but the query times out, we know that the execution of the query over the retrieved data causes the time out and not dereferencing discovered URIs.
-Furthermore, for queries with many links to follow, the query engine discovers most links using the cMatch criterion. The engine primarily uses cMatch to traverse to other Solid pods since all data in a single pod can be retrieved using the contains, storage, and type index predicate links. Queries for which the link queue fills up with thousands of cMatch-sourced links show that this method of pod discovery is not sufficiently selective. We must find a more selective approach to discover other pods that does not produce the gigantic amount of followable links that cMatch does. 
+As mentioned, we can visually divide queries into two subgroups. 
+Queries for which the link queue is mainly empty and the query planning forms the bottleneck, and queries where the link queue fills up rapidly and the query engine cannot dereference the links quickly enough.
+The metrics in [](#tab:metrics) support our visual distinction. 
+By dividing the queries based on the percentage of time the link queue has at least one entry, we find a clear difference in link queue characteristics. 
+We observe that queries with high queue occupancy have a higher percentage of *cMatch* links and, on average, have more than one type of link in the queue for 50% of the query execution time. 
+On the other hand, queries with low queue occupancy have a higher occurrence rate of *contains* links and seldom have more than two types of links in the queue at a given time.
+The queries where the link queue is empty for most of the query execution time support the conclusion of the [](cite:cites taelman2023evaluation). 
+The paper concludes that current query plan optimization approaches perform poorly for LTQP.
+When the link queue is empty, but the query times out, we know that the execution of the query over the retrieved data causes the time out and not dereferencing discovered URIs.
+For queries with many links in the queue, we find that the queue often contains different types of links during query execution. 
+Showing that link prioritisation strategies based on link sources can influence query execution strategy during LTQP.
+Furthermore, for queries with many links to follow, the query engine discovers most links using the cMatch criterion. 
+The engine primarily uses cMatch to traverse to other Solid pods since all data in a single pod can be retrieved using the contains, storage, and type index predicate links. Queries for which the link queue fills up with thousands of cMatch-sourced links show that this method of pod discovery is not sufficiently selective. 
+We must find a more selective approach to discover other pods that does not produce the gigantic amount of followable links that cMatch does. 
