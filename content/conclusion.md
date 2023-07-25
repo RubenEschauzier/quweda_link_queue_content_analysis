@@ -16,3 +16,7 @@ For type two queries, our analysis shows that link prioritization using the stru
 Thus, future research into how to use these structural assumptions to prioritize links is an interesting future direction. 
 Finally, the large number of cMatch sourced links in type two queries' link queue shows that using cMatch to discover new Solid pods is insufficiently selective. 
 Future work should investigate alternative approaches that allow for more selective cross-pod link traversal.
+
+### Acknowledgements
+This research was supported by SolidLab Vlaanderen (Flemish Government, EWI and RRF project VV023/10).
+Ruben Taelman is a postdoctoral researcher at the Research Foundation – Flanders (FWO).
