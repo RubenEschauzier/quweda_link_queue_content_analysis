@@ -9,13 +9,11 @@ Finally, we introduce metrics to represent the diversity of links in the queue.
 
 We use the recently introduced [_SolidBench benchmark_](cite:cites taelman2023evaluation) for our analysis, 
 which uses the [_Social Network Benchmark (SNB)_](cite:cites angles2020ldbc, erling2015ldbc) at its core. 
-The SNB models a social network similar to Facebook, <span class="rephrase" data-author="RV">which is an original use-case of Solid and thus serves as a good candidate for analysis</span>. 
-<span class="comment" data-author="RV">What you write is correct, but we are aiming to de-emphasize the social network roots of Solid, as many more powerful applications are possible. Shall we write something instead about the qualitative aspects of the data, i.e., how it generates a network of connected data?</span>
+The SNB models a social network similar to Facebook; social networks produce networks of connected data with users acting as data hubs.
+This data structure is suited for the Solid protocol, where Solid pods act as data hubs.
 SolidBench uses this centralized benchmark as a data generator and then fragments this data into data vaults, which function as Solid pods. 
 We use the default data generation and fragmentation parameters, which results in 158,233 RDF files over 1,531 data vaults using the default fragmentation strategy.
 There are 3,556,159 triples across all files, with 22.47 triples per file on average.
-<span class="comment" data-author="RV">Note that in English writing, commas and periods have the opposite meaning in numbers. I corrected this.</span>
-
 The SolidBench benchmark uses the read-only interactive workload of SNB, which corresponds to the workload that social network applications encounter. 
 The interactive workload of SNB has two query template classes: _complex_ and _short_. 
 [Preliminary testing](cite:cites taelman2023evaluation) of the benchmark show that these queries are challenging to existing LTQP techniques, with most complex queries reaching timeout. 
@@ -55,19 +53,20 @@ The different predicates or criteria used to discover new links in Link Traversa
 {:##linkqueueanalysis}
 
 To investigate the behavior of the link queue during LTQP, we will register the link source for each dereferenced link during query execution. 
-We make a snapshot of the link sources in the link queue when a link is popped from or pushed to the link queue and register the timestamp of this action. 
+We make a snapshot of the link sources in the link queue whenever a link is popped from or pushed to the link queue and register the timestamp of the snapshot. 
 Thus, we obtain the evolution of the sources in the link queue during query execution. \\
 Using this information, we will first plot the different types of sources and their numbers present in the link queue. 
 This plot will give us insight into the data discovery pattern of the query engine and allow us to investigate avenues for link prioritization algorithms or other forms of optimization. 
-Furthermore, we will determine the percentage of time the link queue contains $$k$$ or more links and determine the average number of link types present in the link queue, given $$k$$ links are present.
+To support the visual analysis of the link queue, we introduce metrics that measure link queue characteristics. 
+We are interested in what percentage of all links we obtain from a given source. 
+Furthermore, we will determine the fraction of time the link queue contains $$k$$ or more links ($$ p\mathit{Eff}(k) $$) and calculate the average number of link types present in the link queue, given $$k$$ links are present ($$\bar{n^{q}}(k)$$). 
+These metrics give us insight into possible bottlenecks during query execution and whether link prioritization based on link sources has merit for LTQP.
 We calculate these metrics using
-<span class="comment" data-author="RV">Why? This comes out of the blue</span>
 
 $$
 \begin{aligned}
     p\mathit{Eff}(k) = \dfrac{\sum_{\{t_{0} \leq t_{i} < t_{N}| n^{q}_{t_{i}} \geq k\}} t_{i+1} - t_{i}}{t_{n} - t_{0}}, \quad 
     \bar{n^{q}}(k) = \dfrac{\sum_{\{t_{0} \leq t_{i} < t_{N}|n^{q}_{t_{i}} \geq k\}} (t_{i+1} - t_{i})n^{q}_{t_{i}}}{t_{n} - t_{0}}. \\
-
 \end{aligned}
 $$
 

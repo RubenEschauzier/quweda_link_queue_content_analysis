@@ -1,14 +1,6 @@
 ## Results
 {:#results}
-<span class="comment" data-author="RV">Font size of the figures needs to be a least times 3 and I am not exaggerating.</span>
-<span class="comment" data-author="RV">Possibly the legend is only needed once; also think about the color blind (AKA those who print in black and white)</span>
-
-First, we will present a selection of the link queue evolutions that accurately represent what we found in all 27 queries. 
-<del class="comment" data-author="RV">[](#figure-main) has the query execution time on the x-axis and the number of links of a given type on the y-axis. </del>
-<span class="comment" data-author="RV">The axis labels should be on the figure (with font size times 3).</span>
-We run the queries using the default Solid configuration of Comunica [](cite:cites taelman2018comunica) and set the timeout at 60 seconds.
-<span class="comment" data-author="RV">What is the sampling frequency of the link queue? Or are the numbers instantaneous?</span>
-
+In [](#figure-main), we present a selection of the link queue evolutions that accurately represent what we found in all 27 queries. 
 From these figures, we find two categories of queries: queries where the engine can quickly process the number of discovered links and queries where the number of links followed increases steadily to the point that the query engine cannot handle the number of discovered links. 
 Furthermore, we set the timeout to 1100 seconds for [](#figure-main-5) to investigate the spike of <em class="keyword">cMatch</em> links. 
 The result is given in [](#figure-main-2-2).
@@ -19,29 +11,28 @@ We find that the <em class="keyword">cMatch</em> criterion can quickly generate 
 <figure id="figure-main-1" class="subfigure">
 <img src="figures/interactive-complex-3-timestamps-updated.svg">
 <figcaption markdown="block">
-Link queue content of the complex-3 query. 
-<span class="comment" data-author="RV">Try saying not what we see, but what we are _supposed_ to see. Example: <q><em class="keyword">cMatch</em> strains the link queue more than all others, because…</q></span>
+While the query engine manages to fill the link queue, <em class="keyword">cMatch</em> strains the link queue more than others. 
 </figcaption>
 </figure>
 
 <figure id="figure-main-2" class="subfigure">
-<img src="figures/interactive-discover-7-timestamps.svg">
+<img src="figures/interactive-discover-7-timestamps-updated.svg">
 <figcaption markdown="block">
-Link queue content of the discover-7 query. 
+The link queue is primarily empty, but the query times out. The empty link queue shows that current query execution plans are insufficiently optimized. 
 </figcaption>
 </figure>
 
 <figure id="figure-main-3" class="subfigure">
-<img src="figures/interactive-short-2-timestamps.svg">
+<img src="figures/interactive-short-2-timestamps-updated.svg">
 <figcaption markdown="block">
-Link queue content of the short-2 Query. 
+The link queue quickly fills up with many <em class="keyword">cMatch</em> links and the query engine cannot process the volume of links. 
 </figcaption>
 </figure>
 
 <figure id="figure-main-4" class="subfigure">
-<img src="figures/interactive-short-7-timestamps.svg">
+<img src="figures/interactive-short-7-timestamps-updated.svg">
 <figcaption markdown="block">
-Link queue content of the short-7 query. 
+The link queue is primarily empty, but the query times out. The empty link queue shows that current query execution plans are insufficiently optimized. 
 </figcaption>
 </figure>
 </figure>
@@ -50,13 +41,14 @@ Link queue content of the short-7 query.
 <figure id="figure-main-2-1" class="subfigure">
 <img src="figures/interactive-complex-2-timestamps-shortened-updated.svg">
 <figcaption markdown="block">
-Link queue content of the complex-2 query.
+Before the timeout, we see a spike in <em class="keyword">cMatch</em> links, but the query engine can process the links before this.
 </figcaption>
+
 </figure>
 <figure id="figure-main-2-2" class="subfigure">
 <img src="figures/interactive-complex-2-timestamps-updated-complete.svg">
 <figcaption markdown="block">
-Link queue content of the complex-2 query with an extended timeout. 
+When we extend the timeout we find the number of <em class="keyword">cMatch</em> links explodes, making query execution infeasible.
 </figcaption>
 </figure>
 </figure>
