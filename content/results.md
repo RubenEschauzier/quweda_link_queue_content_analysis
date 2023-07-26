@@ -7,20 +7,17 @@ First, we will present a selection of the link queue evolutions that accurately 
 <del class="comment" data-author="RV">[](#figure-main) has the query execution time on the x-axis and the number of links of a given type on the y-axis. </del>
 <span class="comment" data-author="RV">The axis labels should be on the figure (with font size times 3).</span>
 We run the queries using the default Solid configuration of Comunica [](cite:cites taelman2018comunica) and set the timeout at 60 seconds.
-The timeout is not strict, as it can run longer due to implementation details. 
-<span class="comment" data-author="RV">That's very weird actually. We should cut it off (or at least have that fixed by camera ready). Can we remove this sentence?</span>
 <span class="comment" data-author="RV">What is the sampling frequency of the link queue? Or are the numbers instantaneous?</span>
 
 From these figures, we find two categories of queries: queries where the engine can quickly process the number of discovered links and queries where the number of links followed increases steadily to the point that the query engine cannot handle the number of discovered links. 
 Furthermore, we set the timeout to 1100 seconds for [](#figure-main-5) to investigate the spike of <em class="keyword">cMatch</em> links. 
-The result is given in [](#figure-main-6). 
-<span class="todo">Broken figure</span>
+The result is given in [](#figure-main-2-2).
 We find that the <em class="keyword">cMatch</em> criterion can quickly generate a very large number of links to follow, slowing down the query execution and making the query infeasible to execute.
 
 
 <figure id="figure-main" class="result-figure-grid ">
 <figure id="figure-main-1" class="subfigure">
-<img src="figures/interactive-complex-3-timestamps.svg">
+<img src="figures/interactive-complex-3-timestamps-updated.svg">
 <figcaption markdown="block">
 Link queue content of the complex-3 query. 
 <span class="comment" data-author="RV">Try saying not what we see, but what we are _supposed_ to see. Example: <q><em class="keyword">cMatch</em> strains the link queue more than all others, because…</q></span>
@@ -50,14 +47,14 @@ Link queue content of the short-7 query.
 </figure>
 
 <figure id="figure-main" class="result-figure-grid ">
-<figure id="figure-main-1" class="subfigure">
-<img src="figures/interactive-complex-2-timestamps-shortened.svg">
+<figure id="figure-main-2-1" class="subfigure">
+<img src="figures/interactive-complex-2-timestamps-shortened-updated.svg">
 <figcaption markdown="block">
 Link queue content of the complex-2 query.
 </figcaption>
 </figure>
-<figure id="figure-main-2" class="subfigure">
-<img src="figures/interactive-complex-2-timestamps.svg">
+<figure id="figure-main-2-2" class="subfigure">
+<img src="figures/interactive-complex-2-timestamps-updated-complete.svg">
 <figcaption markdown="block">
 Link queue content of the complex-2 query with an extended timeout. 
 </figcaption>
