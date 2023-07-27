@@ -13,7 +13,7 @@ Indegree-based scoring counts the number of incoming edges of a vertex and uses 
 
 [_Intermediate solutions-based link prioritization (ISLP)_](cite:cites hartig2016walking) is an adaptive approach where vertexes are scored based on the number of solutions the vertex has contributed to. 
 ISLP then scores links based on the neighboring vertexes' scores.
-This approach uses the belief that highly relevant documents contain links to other relevant documents. This assumption is also used in [](cite:cites lynden2013hybrid). The authors prioritize URIs similar to previously dereferenced URIs that produced query results. To measure URI similarity, the authors use Levenshtein string distance.
+This approach uses the belief that highly relevant documents contain links to other relevant documents. [_String similarity-based algorithms_](cite:cites lynden2013hybrid) also use this assumption. The algorithm prioritize URIs similar to previously dereferenced URIs that produced query results. To measure URI similarity, the authors use Levenshtein string distance.
 
 For all approaches, the literature suggests that while link prioritization outperforms a simple FiFo queue for some queries, it performs worse for others.
 We conclude that, while link prioritisation has merit, it needs more in-depth research into what makes a sound link prioritisation approach and why some queries show no benefit from link prioritisation and others do.

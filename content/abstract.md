@@ -1,9 +1,7 @@
 ## Abstract
 <!-- Context      -->
-Link Traversal-based Query Processing (LTQP) is
-a decentralized querying approach
-<span class="comment" data-author="RV">I'm gonna nitpick here, but I don't think that <q>decentralized</q> is what sets LTQP apart. I think this is a good discussion topic for the query group.</span>
-that iteratively follows links at runtime to discover data sources to query.
+Link Traversal-based Query Processing (LTQP) is an integrated querying approach that allows the query engine to start with zero knowledge of the data to query and discover data sources on the fly.
+The query engine starts with some seed documents and dynamically discovers new data sources by dereferencing hyperlinks in previously ingested data.
 Given the dynamic nature of source discovery, query processing tends to be relatively slow.
 Optimization techniques exist, such as exploiting existing structural information, 
 <!-- Need         -->
@@ -17,8 +15,8 @@ This paper analyses the link queue to guide future work on LTQP query optimizati
 Our results show that queries exhibit two different execution patterns:
 one where the link queue is primarily empty,
 and the other where the link queue fills faster than the engine can process. 
-<span class="comment" data-author="RV">Great finding!</span>
 <!-- Conclusion   -->
+
 This dichotomy shows that LTQP is a multifaceted problem and needs to be approached from different research directions.
 <span class="comment" data-author="RV">I don't see how the multifaceted follows from the dichotomy; maybe the argument is detailed in the paper, but then I would phrase as:
 <q>We explain how this dichotomy indicates that LTQP is a multifaceted problem…</q>
