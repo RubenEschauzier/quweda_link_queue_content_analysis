@@ -16,11 +16,5 @@ Our results show that queries exhibit two different execution patterns:
 one where the link queue is primarily empty,
 and the other where the link queue fills faster than the engine can process. 
 <!-- Conclusion   -->
+Our results show that the link queue is not functioning optimally, and that our current approach to link discovery is not sufficiently selective. 
 
-This dichotomy shows that LTQP is a multifaceted problem and needs to be approached from different research directions.
-<span class="comment" data-author="RV">I don't see how the multifaceted follows from the dichotomy; maybe the argument is detailed in the paper, but then I would phrase as:
-<q>We explain how this dichotomy indicates that LTQP is a multifaceted problem…</q>
-</span>
-<span class="comment" data-author="RV">Although, if I'm honest, I don't really like this multifaceted conclusion. On the one hand, it's something we already knew (so nothing new learned here); on the other hand, it's true in general, many things are multifaceted, so what does it _really_ mean?</span>
-We conclude that LTQP optimization research should focus on more efficient or selective link traversal techniques and improving query planning in LTQP.
-<span class="comment" data-author="RV">Well, we already knew that too. So that's not really a conclusion. I think a conclusion is that the link queue is not functioning optimally, and that investigating into different kinds of backlogs might be needed. Maybe that is multiple queues, maybe that is prioritized queues, maybe…</span>

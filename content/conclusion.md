@@ -10,8 +10,7 @@ This bottleneck shows that improving existing zero-knowledge query planning is r
 For Type 2 queries, we find that while the link queue quickly fills up with links retrieved using <em class="keyword">cMatch</em>, other link sources are often present concurrently.
 
 These observations highlight that _link prioritization_ based on the structural properties of Solid can influence query execution time and that the <em class="keyword">cMatch</em> criterion is not sufficiently selective for efficient LTQP. 
-We conclude that future work on LTQP <del class="comment" data-author="RV">for Solid</del> has three avenues for research:
-<span class="comment" data-author="RV">that's good, that's really exciting as a conclusion</span>
+We conclude that future work on LTQP has three avenues for research:
 
 - Investigate new query optimization algorithms to improve Type 1 query execution. 
 Adaptive query planning seems especially promising due to the lack of prior knowledge of the data during LTQP. 

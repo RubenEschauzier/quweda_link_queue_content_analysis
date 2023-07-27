@@ -58,7 +58,7 @@ We investigate the metrics introduced in [](#experimentsetup) to quantify the tw
 We split the queries into two groups:
 one with a non-zero number of links in the queue for more than 50% of the query execution time,
 and the other for less than 50%. 
-The group with high queue occupancy contains twelve queries, while the other group contains fifteen queries.
+The group with high queue occupancy contains twelve queries, while the other group contains fifteen queries. Interestingly, all discover queries belong to the query group with low queue occupancy.
 The average metrics of the groups are shown in [](#tab:metrics). 
 
 <figure id="tab:metrics" class="table" markdown="1">
@@ -76,24 +76,14 @@ This table shows the average metrics for queries with over and under 50% link qu
 ## Discussion
 {:#Discussion}
 
-<del class="comment" data-author="RV">
-As mentioned, we can visually divide queries into two subgroups. 
-Queries for which the link queue is mainly empty and the query planning forms the bottleneck, and queries where the link queue fills up rapidly and the query engine cannot dereference the links quickly enough.
-The metrics in [](#tab:metrics) support our visual distinction.
-</del>
-<span class="comment" data-author="RV">We're just repeating ourselves here.</span>
 By dividing the queries based on the percentage of time the link queue has at least one entry, we find a clear difference in link queue characteristics. 
 We observe that queries with high queue occupancy have a higher percentage of <em class="keyword">cMatch</em> links and, on average, have more than one type of link in the queue for 50% of the query execution time. 
 On the other hand, queries with low queue occupancy have a higher occurrence rate of *contains* links and seldom have more than two types of links in the queue at a given time.
 
-The queries where the link queue is empty for most of the query execution time support the conclusion of [](cite:cites taelman2023evaluation), 
-namely that current query plan optimization approaches perform poorly for LTQP.
-When the link queue is empty, but the query times out, we know that the execution of the query over the retrieved data causes the time out and not dereferencing discovered URIs.
+The queries where the link queue is empty for most of the query execution time support the conclusion that current query plan optimization approaches perform poorly for LTQP [](cite:cites taelman2023evaluation). The authors support their conclusion using an emperical experiment on all discover queries, from our results we find that these queries indeed have a low queue occupancy.
+When the link queue is empty, but the query times out, we know that the execution of the query plan over the retrieved data causes the time out and not dereferencing discovered URIs.
 
 For queries with many links in the queue, we find that the queue often contains different types of links during query execution. 
-<span class="comment" data-author="RV">Do we disagree there then with [](cite:cites taelman2023evaluation)? If yes, then make it explicit. (If no, then the previous mention of [](cite:cites taelman2023evaluation) might be confusing.)</span>
 This indicates that link prioritisation strategies based on link sources can influence query execution strategy during LTQP.
 Furthermore, for queries with many links to follow, the query engine discovers most links using the <em class="keyword">cMatch</em> criterion. 
-The engine primarily uses <em class="keyword">cMatch</em> to traverse to other Solid pods since all data in a single pod can be retrieved using the contains, storage, and type index predicate links [](cite:cites taelman2023evaluation). Queries for which the link queue fills up with thousands of <em class="keyword">cMatch</em>-sourced links show that this method of pod discovery is not sufficiently selective. 
-<span class="comment" data-author="RV">Move to conclusion:</span>
-We must find a more selective approach to discover other pods that does not produce the gigantic amount of followable links that <em class="keyword">cMatch</em> does. 
+The engine primarily uses <em class="keyword">cMatch</em> to traverse to other Solid pods since all data in a single pod can be retrieved using the contains, storage, and type index predicate links [](cite:cites taelman2023evaluation). Queries for which the link queue fills up with thousands of <em class="keyword">cMatch</em>-sourced links show that this method of pod discovery is not sufficiently selective. Our findings for queries with high queue occupancy contradict the conclusion of [](cite:cites taelman2023evaluation). This contradiction is due to the use of only discovery queries in the emperical experiment to support the statement. 
