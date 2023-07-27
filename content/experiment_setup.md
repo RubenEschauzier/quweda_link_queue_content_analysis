@@ -1,5 +1,6 @@
 ## Experimental Setup
 {:#experimental-setup}
+
 In this section, we first describe the data we use for our analysis.
 We then introduce the possible link types we can track in the Solid environment and how we measure the link queue evolution.
 Finally, we introduce metrics to represent the diversity of links in the queue. 
@@ -56,7 +57,7 @@ To investigate the behavior of the link queue during LTQP, we will register the 
 We make a snapshot of the link sources in the link queue whenever a link is popped from or pushed to the link queue and register the timestamp of the snapshot. 
 Thus, we obtain the evolution of the sources in the link queue during query execution. \\
 Using this information, we will first plot the different types of sources and their numbers present in the link queue. 
-This plot will give us insight into the data discovery pattern of the query engine and allow us to investigate avenues for link prioritization algorithms or other forms of optimization. 
+This plot will give us an understanding of the data discovery pattern of the query engine and allow us to investigate avenues for link prioritization algorithms or other forms of optimization. 
 To support the visual analysis of the link queue, we introduce metrics that measure link queue characteristics. 
 We are interested in what percentage of all links we obtain from a given source. 
 Furthermore, we will determine the fraction of time the link queue contains $$k$$ or more links ($$ p\mathit{Eff}(k) $$) and calculate the average number of link types present in the link queue, given $$k$$ links are present ($$\bar{n^{q}}(k)$$). 

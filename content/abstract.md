@@ -10,11 +10,10 @@ but they depend on a deep understanding of the link queue during LTQP.
 To this end,
 we investigate the evolution of the types of link sources in the link queue and introduce metrics that describe key link queue characteristics. 
 <!-- Object       -->
-This paper analyses the link queue to guide future work on LTQP query optimization approaches that exploit structural information within a Solid environment.
+This paper analyses the link queue to guide future work on LTQP query optimization approaches that exploit structural information within a Solid environment.
 <!-- Findings     -->
-Our results show that queries exhibit two different execution patterns:
-one where the link queue is primarily empty,
+Our results show that queries exhibit two different execution patterns,
+one where the link queue is primarily empty
 and the other where the link queue fills faster than the engine can process. 
 <!-- Conclusion   -->
-Our results show that the link queue is not functioning optimally, and that our current approach to link discovery is not sufficiently selective. 
-
+Our results show that the link queue is not functioning optimally and that our current approach to link discovery is not sufficiently selective. 
