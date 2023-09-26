@@ -9,18 +9,18 @@ If the query engine first dereferences data sources relevant to the query, we ca
 The impact of the link queue on LTQP performance makes it an interesting avenue of optimization [](cite:cites hartig2016walking, lynden2013hybrid).
 However, due to the lack of prior knowledge on the structure of data, the [massive size of data accessed ](cite:cites hartig2012foundations), and the numerous HTTP request needed to obtain the data, [LTQP is slow](cite:cites umbrich2015link). 
 Even with _reachability criteria_ that limit the number of accessed documents and various [link prioritization techniques](cite:cites hartig2016walking), LTQP over the Linked Data Web is too slow for practical applications. 
-
-Fortunately, some decentralized environments have characteristics that we can leverage to improve upon the status quo. 
+The problems of LTQP for Open Linked Data are exacerbated by the significantly faster performance obtained by simply aggregating linked data and serving it as, for example, a SPARQL endpoint. 
+However, for data in decentralized environments with licenses or usage policies this form of centralization of linked data is impossible, and LTQP becomes an interesting solution. 
+Due to the highly decentralized approach to querying, LTQP is unique because it works for both open and closed-linked data querying. 
+The problem remains that LTQP is slow due to the lack of prior knowledge of the data distribution.
+Fortunately, some decentralized environments have characteristics we can leverage to improve the status quo. 
 By making structural assumptions on the data based on the characteristics of a decentralized environment, query engines can use prior knowledge for optimization and can guide the order of data discovery.
-<!-- To make LTQP feasible, we need to work with a decentralized environment in which we can make structural assumptions on the data.
-Structural assumptions allow query planning to use prior knowledge for optimization and can guide the order of data discovery. -->
 For our analysis, we will use the Solid environment as an example of a decentralized environment of which we have prior knowledge of the data structure.
-LTQP is the natural candidate for querying Solid. 
-The Solid protocol describes a linked data publishing paradigm based on access permissions. 
-Depending on the permissions of the user, some data _should_ be inaccessible.
+The Solid protocol describes a linked data publishing paradigm based on access permissions.
+Depending on the user permissions, some data \textit{should} be inaccessible. 
 The widely used approach to linked data publishing is to harvest data and provide a single access point. 
-However, this is currently impossible for the personal data that should be stored in Solid pod, due to privacy and permission concerns. 
-LTQP can query this data, as any documents that the client does not have access to can easily be skipped.
+However, this is currently impossible for the personal data stored in a Solid pod due to privacy and permission concerns. 
+LTQP can query this data by skipping any document the client can not access. 
 Furthermore, we know the general topology of the data in Solid. 
 Personal data vaults act as data hubs and predicates known beforehand indicate the structure within data vaults and relationships between data. 
 These predicates serve as link “sources” that contain information on the possible relevancy or priority of the link.
