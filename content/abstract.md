@@ -12,7 +12,7 @@ we investigate the evolution of the types of link sources in the link queue and 
 <!-- Object       -->
 This paper analyses the link queue to guide future work on LTQP query optimization approaches that exploit structural information within a Solid environment.
 <!-- Findings     -->
-Our results show that queries exhibit two different execution patterns,
+We find that queries exhibit two different execution patterns,
 one where the link queue is primarily empty
 and the other where the link queue fills faster than the engine can process. 
 <!-- Conclusion   -->

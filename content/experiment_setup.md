@@ -15,9 +15,10 @@ This data structure is suited for the Solid protocol, where Solid pods act as da
 SolidBench uses this centralized benchmark as a data generator and then fragments this data into data vaults, which function as Solid pods. 
 We use the default data generation and fragmentation parameters, which results in 158,233 RDF files over 1,531 data vaults using the default fragmentation strategy.
 There are 3,556,159 triples across all files, with 22.47 triples per file on average.
+
 The SolidBench benchmark uses the read-only interactive workload of SNB, which corresponds to the workload that social network applications encounter. 
 The interactive workload of SNB has two query template classes: _complex_ and _short_. 
-[Preliminary testing](cite:cites taelman2023evaluation) of the benchmark show that these queries are challenging to existing LTQP techniques, with most complex queries reaching timeout. 
+[Preliminary testing](cite:cites taelman2023evaluation) of the benchmark show that these queries are challenging for existing LTQP techniques, with most complex queries reaching timeout. 
 SolidBench includes _discover queries_ as a third query template class to enhance SNB.
 These queries include various choke points in the dataset, like _multi-hop document traversal_, _type index_ usage, and determining what HTTP requests are irrelevant. 
 The SolidBench workload consists of 27 query templates, for which we instantiate one query each. 
@@ -55,9 +56,11 @@ The different predicates or criteria used to discover new links in Link Traversa
 
 To investigate the behavior of the link queue during LTQP, we will register the link source for each dereferenced link during query execution. 
 We make a snapshot of the link sources in the link queue whenever a link is popped from or pushed to the link queue and register the timestamp of the snapshot. 
-Thus, we obtain the evolution of the sources in the link queue during query execution. \\
+Thus, we obtain the evolution of the sources in the link queue during query execution. 
+
 Using this information, we will first plot the different types of sources and their numbers present in the link queue. 
 This plot will give us an understanding of the data discovery pattern of the query engine and allow us to investigate avenues for link prioritization algorithms or other forms of optimization. 
+
 To support the visual analysis of the link queue, we introduce metrics that measure link queue characteristics. 
 We are interested in what percentage of all links we obtain from a given source. 
 Furthermore, we will determine the fraction of time the link queue contains $$k$$ or more links ($$ p\mathit{Eff}(k) $$) and calculate the average number of link types present in the link queue, given $$k$$ links are present ($$\bar{n^{q}}(k)$$). 
@@ -71,5 +74,5 @@ $$
 \end{aligned}
 $$
 
-With $$t_{0}$$ the first timestamp of a link queue change recorded, $$t_{N}$$ the final timestamp, and $$n^{q}_{t_{i}}$$ the number of different link sources in the queue at timestamp $$t_{i}$$.
-We execute the queries using the algorithm described in [](cite:cites taelman2023evaluation), which uses a FiFo link queue. 
+With $$t_{0}$$ the first timestamp recorded, $$t_{N}$$ the final timestamp, and $$n^{q}_{t_{i}}$$ the number of different link sources in the queue at timestamp $$t_{i}$$.
+We execute the queries using Comunica [](cite:cites taelman2018comunica). Comunica uses the algorithm described in [](cite:cites taelman2023evaluation), which uses a FiFo link queue and set the query timeout to 60 seconds. All code for [running the experiment](https://github.com/RubenEschauzier/run_link_prioritisation_order_experiments/tree/master), the [query engine](https://github.com/RubenEschauzier/comunica-feature-link-traversal/tree/feature/link_prioritisation_priority_queue), and the [plots](https://github.com/RubenEschauzier/plot_link_queue_content_figures) are on github.
