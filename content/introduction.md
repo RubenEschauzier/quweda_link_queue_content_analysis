@@ -17,7 +17,7 @@ Fortunately, some decentralized environments have characteristics we can leverag
 By making structural assumptions on the data based on the characteristics of a decentralized environment, query engines can use prior knowledge for optimization and can guide the order of data discovery.
 For our analysis, we will use the Solid environment as an example of a decentralized environment of which we have prior knowledge of the data structure.
 The Solid protocol describes a linked data publishing paradigm based on access permissions.
-Depending on the user permissions, some data \textit{should} be inaccessible. 
+Depending on the user permissions, some data _should_ be inaccessible. 
 The widely used approach to linked data publishing is to harvest data and provide a single access point. 
 However, this is currently impossible for the personal data stored in a Solid pod due to privacy and permission concerns. 
 LTQP can query this data by skipping any document the client can not access. 
