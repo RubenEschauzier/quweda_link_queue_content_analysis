@@ -9,7 +9,7 @@ If the query engine first dereferences data sources relevant to the query, we ca
 The impact of the link queue on LTQP performance makes it an interesting avenue of optimization [](cite:cites hartig2016walking, lynden2013hybrid).
 However, due to the lack of prior knowledge on the structure of data, the [massive size of data accessed ](cite:cites hartig2012foundations), and the numerous HTTP request needed to obtain the data, [LTQP is slow](cite:cites umbrich2015link). 
 Even with _reachability criteria_ that limit the number of accessed documents and various [link prioritization techniques](cite:cites hartig2016walking), LTQP over the Linked Data Web is too slow for practical applications. 
-The problems of LTQP for Open Linked Data are exacerbated by the significantly faster performance obtained by simply aggregating linked data and serving it as, for example, a SPARQL endpoint. 
+The problems of LTQP for Linked Open Data are exacerbated by the significantly faster performance obtained by simply aggregating linked data and serving it as, for example, a SPARQL endpoint. 
 However, for data in decentralized environments with licenses or usage policies this form of centralization of linked data is impossible, and LTQP becomes an interesting solution. 
 Due to the highly decentralized approach to querying, LTQP is unique because it works for both open and closed-linked data querying. 
 The problem remains that LTQP is slow due to the lack of prior knowledge of the data distribution.
